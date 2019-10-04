@@ -1,0 +1,12 @@
+<h1>{{ file.name }}</h1>
+
+<!-- {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %} -->
+
+<form action="{% url 'audio:update' file.id %}" method="post">
+{% csrf_token %}
+    <input type="text" name="id" id="name" value="{{ file.id }}">
+    <input type="text" name="name" id="name" value="{{ file.name }}">
+    <input type="text" name="note" id="note" value="{{ file.note }}">
+    <input type="text" name="location" id="location" value="{{ file.location }}">
+    <input type="submit" value="Update">
+</form>

@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+<!-- Plugins css -->
+<link href="{% static 'libs/dropzone/dropzone.min.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'libs/dropify/dropify.min.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            {% include "base_page_title.html" %}
+
+            <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+    
+                                <form action="{% url 'audio:save' %}" method="post" class="dropzone" id="myAwesomeDropzone">
+                                    {% csrf_token %}
+                                    <div class="fallback">
+                                        <input name="file" type="file" multiple />
+                                    </div>
+    
+                                    <div class="dz-message needsclick">
+                                        <i class="h1 text-muted dripicons-cloud-upload"></i>
+                                        <h3>Drop files here or click to upload.</h3>
+                                    </div>
+    
+                                </form>
+    
+                                <div class="clearfix text-right mt-3">
+                                    <form method="post" action="{% url 'audio:save' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="ladda-button btn btn-danger"
+                                            data-style="slide-right"><i class="mdi mdi-send mr-1"></i>Submit
+                                        </button>
+                                    </form>
+                                </div>
+    
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+                    </div><!-- end col -->
+                </div>
+                <!-- end row -->
+
+                {% url 'audio:save' %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">File List</h4>
+                            <p></p>
+                            <table id="state-saving-datatable" class="table activate-select dt-responsive nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>Upload Date</th>
+                                        <!-- <th>Aplicant Name</th> -->
+                                        <th>File Name</th>
+                                        <th>Action</th>
+
+                                        <!--<th>Full Text</th>-->
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    {% for file in file_list %}
+                                    <tr>
+                                        <!-- <td>{{ file.Applicant }}</td> -->
+                                        <td>{{ file.created_at }}</td>
+                                        <td>{{ file.name }}</td>
+                                        <!-- <td>{{text.upload_date}}</td> -->
+                                        <td>
+                                            <a href="{% url 'audio:edit' file.id %}">
+                                                <button type="button" class="ladda-button btn btn-success"
+                                                    data-style="slide-right"><i class="mdi mdi-square-edit-outline"></i>
+                                                    Edit
+                                                </button>
+                                            </a>
+
+                                            <button type="button" class="btn btn-danger waves-effect waves-light"
+                                                data-toggle="modal" data-target=".bs-example-modal-center{{file.id}}"><i
+                                                    class="mdi mdi-delete"></i> Delete</button>
+
+                                            <div class="modal fade bs-example-modal-center{{file.id}}" tabindex="-1"
+                                                role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true"
+                                                style="display: none;">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myCenterModalLabel">Are you sure
+                                                                to delete?</h4>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">×</button>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary waves-effect"
+                                                                data-dismiss="modal">Close</button>
+                                                            <a href="{% url 'audio:delete' file.id %}">
+                                                                <button type="button"
+                                                                    class="btn btn-danger waves-effect waves-light"
+                                                                    data-style="slide-right"><i
+                                                                        class="mdi mdi-delete"></i> Delete</button>
+                                                            </a>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
+
+
+                                            <a href="{% url 'audio:process' file.id %}">
+                                                <button type="button" class="ladda-button btn btn-info"
+                                                    data-style="slide-right"><i class="mdi mdi-play-box-outline"></i>
+                                                    Process</button>
+                                            </a>
+
+                                        </td>
+
+                                        <!--<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed neque vel massa molestie tempus at in eros. Ut sed augue ac ante bibendum efficitur ac eget lectus. In vulputate justo nec mollis gravida. Aliquam tristique tincidunt elementum. Maecenas cursus mauris sit amet rhoncus semper. Suspendisse a augue at eros eleifend consequat nec volutpat purus. Aenean viverra viverra est sed sodales. Donec porta enim quis sem lacinia, ac ullamcorper tortor sodales. Maecenas pharetra tincidunt augue non varius. Nunc euismod ut ipsum quis porta. Sed tristique eros sed urna dictum, varius ultricies nulla vehicula. In posuere lectus nec mollis ultricies. Morbi semper ligula ac nibh tempor auctor. Ut varius posuere mi, ut dapibus ipsum cursus non. Aliquam non sapien sed nulla elementum suscipit ac ut nisi.</td>-->
+                                    </tr>
+                                    {% endfor %}
+                                    <!--<tr>
+                                    <td>Mark Jurcas</td>
+                                    <td>Senior Marketing Designer</td>
+                                    <td>London</td>
+                                    <td>43</td>
+                                    <td>2012/12/18</td>
+                                    <td><a href="speech-to-text-edit.html"><button type="button" class="ladda-button btn btn-success" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                    <td><a href="detail-data.html"><button type="button" class="ladda-button btn btn-info" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob Bima</td>
+                                    <td>Regional Director</td>
+                                    <td>London</td>
+                                    <td>19</td>
+                                    <td>2010/03/17</td>
+                                    <td><a href="speech-to-text-edit.html"><button type="button" class="ladda-button btn btn-success" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                    <td><a href="detail-data.html"><button type="button" class="ladda-button btn btn-info" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Larry the Bird</td>
+                                    <td>Marketing Designer</td>
+                                    <td>London</td>
+                                    <td>66</td>
+                                    <td>2012/11/27</td>
+                                    <td><a href="speech-to-text-edit.html"><button type="button" class="ladda-button btn btn-success" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                    <td><a href="detail-data.html"><button type="button" class="ladda-button btn btn-info" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                </tr>-->
+                                </tbody>
+                            </table>
+
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div>
+            <!-- end row-->
+
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+
+    {% include "base_footer.html" %}
+
+</div>
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'libs/dropzone/dropzone.min.js' %}"></script>
+<script src="{% static 'libs/dropify/dropify.min.js' %}"></script>
+
+<!-- Init js-->
+<script src="{% static 'js/pages/form-fileuploads.init.js' %}"></script>
+
+{% endblock %}

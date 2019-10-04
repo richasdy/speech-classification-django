@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Speech Classification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+
+    {% include "base_css.html" %}
+    
+    {% block css %}{% endblock %}
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        {% include "base_topbar.html" %}
+
+        {% include "base_sidebar_left.html" %}
+
+        {% block content %}{% endblock %}
+
+
+    </div>
+    <!-- END wrapper -->
+
+    {% include "base_sidebar_right.html" %}
+
+    {% include "base_js.html" %}
+
+    {% block js %}{% endblock %}
+
+</body>
+
+</html>

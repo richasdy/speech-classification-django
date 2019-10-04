@@ -1,0 +1,99 @@
+{% load static %}
+{% extends 'audio/base_index.html' %}
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            {% include "audio/base_page_title.html" %}
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">File List</h4>
+                            <p></p>
+                            <table id="state-saving-datatable" class="table activate-select dt-responsive nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>Upload Date</th>
+                                        <th>Aplicant Name</th>
+                                        <th>File Name</th>
+                                        <!--<th>Edit</th>-->
+                                        <th>Process</th>
+                                        <!--<th>Full Text</th>-->
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for text in data2 %}
+                                    <tr>
+                                        <td>{{text.upload_date}}</td>
+                                        <td>{{text.aplicants_name}}</td>
+                                        <td>{{text.title}}</td>
+                                        <!--<td>
+                                                        <a href="speech-to-text-edit.html">
+                                                        <button type="button" class="ladda-button btn btn-success" data-style="slide-right"><i class="mdi mdi-send"></i>
+                                                        </button>
+                                                      </a></td>-->
+                                        <td>
+                                            <a href="{% url 'speech_to_text_process' text.id %}">
+                                                <button type="button" class="ladda-button btn btn-info"
+                                                    data-style="slide-right"><i class="mdi mdi-send"></i></button>
+                                            </a>
+                                        </td>
+                                        <!--<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed neque vel massa molestie tempus at in eros. Ut sed augue ac ante bibendum efficitur ac eget lectus. In vulputate justo nec mollis gravida. Aliquam tristique tincidunt elementum. Maecenas cursus mauris sit amet rhoncus semper. Suspendisse a augue at eros eleifend consequat nec volutpat purus. Aenean viverra viverra est sed sodales. Donec porta enim quis sem lacinia, ac ullamcorper tortor sodales. Maecenas pharetra tincidunt augue non varius. Nunc euismod ut ipsum quis porta. Sed tristique eros sed urna dictum, varius ultricies nulla vehicula. In posuere lectus nec mollis ultricies. Morbi semper ligula ac nibh tempor auctor. Ut varius posuere mi, ut dapibus ipsum cursus non. Aliquam non sapien sed nulla elementum suscipit ac ut nisi.</td>-->
+                                    </tr>
+                                    {% endfor %}
+                                    <!--<tr>
+                                                        <td>Mark Jurcas</td>
+                                                        <td>Senior Marketing Designer</td>
+                                                        <td>London</td>
+                                                        <td>43</td>
+                                                        <td>2012/12/18</td>
+                                                        <td><a href="speech-to-text-edit.html"><button type="button" class="ladda-button btn btn-success" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                                        <td><a href="detail-data.html"><button type="button" class="ladda-button btn btn-info" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jacob Bima</td>
+                                                        <td>Regional Director</td>
+                                                        <td>London</td>
+                                                        <td>19</td>
+                                                        <td>2010/03/17</td>
+                                                        <td><a href="speech-to-text-edit.html"><button type="button" class="ladda-button btn btn-success" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                                        <td><a href="detail-data.html"><button type="button" class="ladda-button btn btn-info" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Larry the Bird</td>
+                                                        <td>Marketing Designer</td>
+                                                        <td>London</td>
+                                                        <td>66</td>
+                                                        <td>2012/11/27</td>
+                                                        <td><a href="speech-to-text-edit.html"><button type="button" class="ladda-button btn btn-success" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                                        <td><a href="detail-data.html"><button type="button" class="ladda-button btn btn-info" data-style="slide-right"><i class="mdi mdi-send"></i></button></a></td>
+                                                    </tr>-->
+                                </tbody>
+                            </table>
+
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div>
+            <!-- end row-->
+
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+
+    {% include "audio/base_footer.html" %}
+
+</div>
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
