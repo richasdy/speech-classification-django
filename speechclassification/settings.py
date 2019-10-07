@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'audio.apps.AudioConfig',
+    'transcribe.apps.TranscribeConfig',
+    'grade.apps.GradeConfig',
 ]
 
 MIDDLEWARE = [
