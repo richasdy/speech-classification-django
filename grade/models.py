@@ -15,6 +15,7 @@ class Grade(models.Model):
     solid_grade = models.IntegerField(default=0)
     speed_grade = models.IntegerField(default=0)
     totality_grade = models.IntegerField(default=0)
+    total = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
