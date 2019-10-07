@@ -6,14 +6,20 @@ from audio.models import File
 class Grade(models.Model):
     File = models.ForeignKey(File, on_delete=models.SET_NULL, null=True)
     # applicant_id = models.IntegerField(default=0) # in byte
-    action_grade = models.TextField(default="")
-    enthusiasm_grade = models.TextField(default="")
-    focus_grade = models.TextField(default="")
-    imagine_grade = models.TextField(default="")
-    integrity_grade = models.TextField(default="")
-    smart_grade = models.TextField(default="")
-    solid_grade = models.TextField(default="")
-    speed_grade = models.TextField(default="")
-    totality_grade = models.TextField(default="")
+    action_grade = models.IntegerField(default=0)
+    enthusiasm_grade = models.IntegerField(default=0)
+    focus_grade = models.IntegerField(default=0)
+    imagine_grade = models.IntegerField(default=0)
+    integrity_grade = models.IntegerField(default=0)
+    smart_grade = models.IntegerField(default=0)
+    solid_grade = models.IntegerField(default=0)
+    speed_grade = models.IntegerField(default=0)
+    totality_grade = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
+
+    # def __str__(self):
+    #     return self.File
+
+    def get_action():
+        return 0
