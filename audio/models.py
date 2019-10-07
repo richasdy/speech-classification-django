@@ -14,6 +14,7 @@ class File(models.Model):
     name = models.CharField(max_length=100,default="")
     note = models.TextField(default="")
     location = models.TextField(default="")
+    location_cloud = models.TextField(default="")
     size = models.IntegerField(default=0) # in byte
     duration = models.IntegerField(default=0) #in minute
     created_at = models.DateTimeField(default=timezone.now)

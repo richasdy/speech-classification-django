@@ -7,11 +7,23 @@ from django.template import loader
 from django.http import Http404
 from django.urls import reverse
 from django.views import generic
+from django.conf import settings
+
+
 
 from django.shortcuts import redirect
 from django.core.files.storage import FileSystemStorage
 
+from werkzeug.utils import secure_filename
+from pydub import AudioSegment
+import os
+from google.cloud import storage
+
 from .models import File
+
+bucket_name = 'kemitraan-telkom-1550985641715.appspot.com' #pak ikhsan
+extensions = set(['mp3', 'wav'])
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "keytelkom.json" #pak ikhsan
 
 def index(request):
     file_list = File.objects.all()
@@ -65,39 +77,83 @@ def update(request, id):
 
     return HttpResponseRedirect(reverse('audio:edit', args=(file.id,)))
 
-uploaded_file_list = [];
+def save_local(request):
 
-def save(request):
-    # response = "You're looking at the results of audio save %s. "+request.FILES['file']
-    # return HttpResponse(response % id)
+    if request.method == 'POST' and request.FILES['myfile']:
 
-    uploaded_file_list.clear()
+        myfile = request.FILES['myfile']
 
-    # if request.method == 'POST':
-    #     uploaded_file = request.FILES['file']
-    #     uploaded_file_list.append(uploaded_file)
-    #     fs = FileSystemStorage()
-    #     audio_name = fs.save(uploaded_file.name, uploaded_file)
-    #     audio_url = fs.url(audio_name)
-    #     audio_byte_size = fs.size(audio_name)/1000000
-    #     # audio_megabyte_size = "%.2f" % audio_byte_size
-    #     audio_megabyte_size = "%.2f" % audio_byte_size
-    #     # audio_size = str(audio_megabyte_size)+ " mb"
-    #     audio_size = audio_megabyte_size
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
 
-    #     file = File(title=audio_name, aplicants_name="Admin (Hard Coded)", directory=audio_url, size=audio_size)
-    #     file.save()
-
-    #     print(audio_url)
+        file = File.objects.create()
+        file.name = filename
+        file.location = fs.url(filename)
+        file.size = fs.size(filename)
+        file.save()
 
     return redirect('/audio/')
 
-    # data3 = File.objects.all()
-    # return render(request, 'django_app/audio-upload.html', {"data3" : data3})
+def save(request):
+
+    if request.method == 'POST' and request.FILES['myfile']:
+
+        myfile = request.FILES['myfile']
+
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        location_local = fs.url(filename)
+        location_cloud = ""
+        size = fs.size(filename)
+
+        #jika ekstensi bukan wav, ubah jadi wav dulu
+        if filename.split('.')[1] != 'wav':
+            dst = filename.split('.')[0] + ".wav"
+            sound = AudioSegment.from_mp3(os.path.join(settings.MEDIA_ROOT, filename))
+            sound.export(os.path.join(settings.MEDIA_ROOT, dst), format='wav')
+            os.remove(os.path.join(settings.MEDIA_ROOT, filename))
+            filename = dst
+        
+        sound = AudioSegment.from_wav(os.path.join(settings.MEDIA_ROOT, filename))
+        sound = sound.set_channels(1)
+        sound = sound.set_sample_width(2)
+        sound.export(os.path.join(settings.MEDIA_ROOT, filename), format='wav')
+
+        #upload ke bucket_name yang sudah di tentukan diawal kode
+        storage_client = storage.Client()
+        bucket = storage_client.get_bucket(bucket_name)
+        blob = bucket.blob(filename)
+        blob.upload_from_filename(os.path.join(settings.MEDIA_ROOT, filename))
+        blob.make_public()
+        location_cloud = blob._get_download_url()
+
+        os.remove(os.path.join(settings.MEDIA_ROOT, filename))
+
+        file = File.objects.create()
+        file.name = filename
+        file.location = location_local
+        file.location_cloud = location_cloud
+        file.size = size
+        file.save()
+
+    return redirect('/audio/')
 
 
 def delete(request, id):
-    return HttpResponse("You're voting on audio delete %s." % id)
+    file = get_object_or_404(File, id=id)
+    filename = file.name
+    file.delete()
+
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(filename)
+    blob.delete()
+
+    return redirect('/audio/')
 
 def process(request, id):
     return HttpResponse("You're voting on audio process %s." % id)
+
+#mengembalikan tipe file
+# def file_allowed(filename):
+#     return '.' in filename and filename.rsplit('.', 1)[1].lower() in extensions

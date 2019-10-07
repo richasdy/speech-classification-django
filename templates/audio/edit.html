@@ -55,7 +55,7 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">Lokasi File</label>
+                                            <label for="inputEmail3" class="col-4 col-form-label">Lokasi File Local</label>
                                             <div class="col-7">
                                                 <input type="text" value="{{ file.location }}" name="location" disabled
                                                     required="" parsley-type="email"
@@ -63,6 +63,16 @@
                                                     placeholder="Pelamar" data-parsley-id="40">
                                             </div>
                                         </div>
+
+                                        <div class="form-group row">
+                                                <label for="inputEmail3" class="col-4 col-form-label">Lokasi File Cloud</label>
+                                                <div class="col-7">
+                                                    <input type="text" value="{{ file.location_cloud }}" name="location_cloud" disabled
+                                                        required="" parsley-type="email"
+                                                        class="form-control parsley-success" id="inputEmail3"
+                                                        placeholder="Pelamar" data-parsley-id="40">
+                                                </div>
+                                            </div>
 
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Ukuran File</label>
@@ -142,14 +152,14 @@
                                             </li>
 
 
-                                            <li class="next list-inline-item float-right">
+                                            <!-- <li class="next list-inline-item float-right">
                                                 <a href="{% url 'audio:process' file.id %}">
                                                     <button type="button" class="ladda-button btn btn-danger"
                                                         data-style="slide-right"><i
                                                             class="mdi mdi-play-box-outline"></i> Process
                                                     </button>
                                                 </a>
-                                            </li>
+                                            </li> -->
                                         </ul>
 
                                     </form>

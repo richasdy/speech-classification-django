@@ -22,39 +22,50 @@
             {% include "base_page_title.html" %}
 
             <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-    
-                                <form action="{% url 'audio:save' %}" method="post" class="dropzone" id="myAwesomeDropzone">
-                                    {% csrf_token %}
-                                    <div class="fallback">
-                                        <input name="file" type="file" multiple />
-                                    </div>
-    
-                                    <div class="dz-message needsclick">
-                                        <i class="h1 text-muted dripicons-cloud-upload"></i>
-                                        <h3>Drop files here or click to upload.</h3>
-                                    </div>
-    
-                                </form>
-    
-                                <div class="clearfix text-right mt-3">
-                                    <form method="post" action="{% url 'audio:save' %}">
-                                        {% csrf_token %}
-                                        <button type="submit" class="ladda-button btn btn-danger"
-                                            data-style="slide-right"><i class="mdi mdi-send mr-1"></i>Submit
-                                        </button>
-                                    </form>
-                                </div>
-    
-                            </div> <!-- end card-body-->
-                        </div> <!-- end card-->
-                    </div><!-- end col -->
-                </div>
-                <!-- end row -->
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
 
-                {% url 'audio:save' %}
+                            <form action="{% url 'audio:save' %}" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label>Select audio file</label>
+                                    <div class="custom-file">
+                                        <input type="file" name="myfile" id="audio" multiple required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" value="submit">Upload</button>
+                            </form>
+
+                            <!-- <form action="{% url 'audio:save' %}" method="post" class="dropzone" id="myAwesomeDropzone">
+                                {% csrf_token %}
+                                <div class="fallback">
+                                    <input name="file" type="file" multiple />
+                                </div>
+
+                                <div class="dz-message needsclick">
+                                    <i class="h1 text-muted dripicons-cloud-upload"></i>
+                                    <h3>Drop files here or click to upload.</h3>
+                                </div>
+
+                            </form>
+
+                            <div class="clearfix text-right mt-3">
+                                <form method="post" action="{% url 'audio:save' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="ladda-button btn btn-danger"
+                                        data-style="slide-right"><i class="mdi mdi-send mr-1"></i>Submit
+                                    </button>
+                                </form>
+                            </div> -->
+
+                        </div> <!-- end card-body-->
+                    </div> <!-- end card-->
+                </div><!-- end col -->
+            </div>
+            <!-- end row -->
+
+            {% url 'audio:save' %}
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -120,11 +131,11 @@
                                             </div><!-- /.modal -->
 
 
-                                            <a href="{% url 'audio:process' file.id %}">
+                                            <!-- <a href="{% url 'audio:process' file.id %}">
                                                 <button type="button" class="ladda-button btn btn-info"
                                                     data-style="slide-right"><i class="mdi mdi-play-box-outline"></i>
                                                     Process</button>
-                                            </a>
+                                            </a> -->
 
                                         </td>
 
@@ -188,5 +199,17 @@
 
 <!-- Init js-->
 <script src="{% static 'js/pages/form-fileuploads.init.js' %}"></script>
+
+<script type="text/javascript">
+
+    $('.custom-file input').change(function (e) {
+        var files = [];
+        for (var i = 0; i < $(this)[0].files.length; i++) {
+            files.push($(this)[0].files[i].name);
+        }
+        $(this).next('.custom-file-label').html(files.join(', '));
+    });
+
+    </script>
 
 {% endblock %}
