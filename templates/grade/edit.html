@@ -2,6 +2,11 @@
 
 {% load static %}
 
+{% block css %}
+<!-- Summernote css -->
+<link href="{% static 'libs/summernote/summernote-bs4.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 {% block content %}
 <!-- ============================================================== -->
 <!-- Start Page Content here -->
@@ -95,6 +100,80 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="header-title m-t-0">Verbatim</h4>
+                                                        <p class="sub-header">setiap corporation value
+                                                            dipisahkan berdasarkan paragraf dengan urutan : action,
+                                                            enthusiasm, focus, imagine, integrity, smart, solid, speed,
+                                                            totality</p>
+                                                        <div id="summernote-inline">
+
+                                                            <p>langsung dikerjain di utara in yang pasti dulu ntar dulu
+                                                                sama tim kita pastikan selalu ada orang-orang disekitar
+                                                                kita yang terkena efek kalau kita tuh punya suatu ide
+                                                                punya punya sesuatu yang mau dikerjain mau diapresiasi
+                                                                ini kita mau dimatiin dulu kalau kalau emang sekiranya
+                                                                orang-orang sekitar setuju ya dikerjain</p>
+                                                            <p>saya sih lebih cenderung pengalaman saya
+                                                                dalamberorganisasi lah ya Ini mah yang sudah saya
+                                                                optimalkan paling saya selalu apabila diberi kepercayaan
+                                                                yang memaksimalkan kepercayaan itu itu karena menurut
+                                                                saya tanggung jawab itu sangat penting gitu</p>
+                                                            <p>memilih prioritas yang lebih penting kalau agenda rapat
+                                                                itu keputusan dan hasilnya lebih penting dan efeknya
+                                                                lebih besar buat semua yang milih rapat ketemu teman
+                                                                kosnya diundur tapi kalau misal ketemu teman kos itu
+                                                                manfaatnya juga efeknya lebih besar daripada hasil
+                                                                mengikuti rapat yang apa memilih lebih lebih memilih
+                                                                bertemu teman kos</p>
+                                                            <p>Saya enggak pernah menyusun rencana jangka panjang saya
+                                                                selalu Mengikuti alur yang ada aja Jadi kalau besok mau
+                                                                ini ya dikerjain kalau lusa nggak ada kerjaannya nggak
+                                                                Dik nggak merencanakan suatu pekerjaan tapi kalau emang
+                                                                besok mau ini langsung dikerjain gitu</p>
+                                                            <p>pernah eh pelanggarannya maksudnya pelanggaran efektif
+                                                                atau pelanggaran buat individu pelanggaran sendiri ya
+                                                                pernah kalau efeknya buat diri sendiri diusahakan ke
+                                                                depannya tidak akan berulang lagi tapi sampai sekarang
+                                                                sih Iya nggak nggak nggak nggak nggak berulang</p>
+                                                            <p>biasanya Apabila terjadi seperti itu saya selalu
+                                                                istirahat dulu dalam kerjaan itu kemudian Ya sambil
+                                                                memikirkan dan bertanya-tanya juga kepada orang yang
+                                                                lebih mengetahui akan hal itu gitu jadi Untuk itu saya
+                                                                biasanya yaitu memikirkan berhenti untuk bekerja itu
+                                                                dulu namun sambil memikirkan gitu dan dengan cara
+                                                                mungkin bertanya kepada yang lebih ahli atau membaca
+                                                                baca lagi referensinya</p>
+                                                            <p>sebisa mungkin saya melakukan pendekatan terlebih dahulu
+                                                                terhadap orang yang bersangkutan tersebut apabila di
+                                                                sini Posisi saya sebagai koordinator nya Namun apabila
+                                                                pendekatan tersebut tidak bisa mereduksi permasalahan
+                                                                tersebut ya saya mencoba untuk membackup membackup
+                                                                jobdesk tersebut karena mau nggak mau kegiatan harus
+                                                                tetap berjalan gitu</p>
+                                                            <p>pernah sebenarnya itu solusinya kalau dari saya saya
+                                                                kerjakan sebisa mungkin dulu maksudnya kita optimalkan
+                                                                waktu yang tersisa gitu jadi ya semaksimal mungkin lah
+                                                                kita kerjakan mau nggak mau karena memang sudah di
+                                                                delete seperti itu ya maksimalkan saja</p>
+                                                            <p>ya ngikutin kegiatan teman-teman sekitar ngikutin
+                                                                organisasi ngikutin apa main sama temen-temen dari main
+                                                                sama temen-temen itu kan pasti ada obrolan ada suatu
+                                                                obrolan yang oh berarti kepribadianku harus gini Oh
+                                                                berarti software goyang ini harus ditambah biar jadi
+                                                                kayak gitu sering berkumpul sama teman-teman sekitar
+                                                                sama kegiatan organisasi</p>
+
+
+                                                        </div> <!-- end summernote-inline-->
+                                                    </div> <!-- end card-body-->
+                                                </div> <!-- end card-->
+                                            </div><!-- end col -->
+                                        </div>
+
                                         <ul class="list-inline wizard mt-3">
                                             <li class="previous list-inline-item">
                                                 <a href="{% url 'grade:index' %}">
@@ -130,10 +209,10 @@
                                                                 <button type="button"
                                                                     class="btn btn-secondary waves-effect"
                                                                     data-dismiss="modal">Close</button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-success waves-effect waves-light"
-                                                                        data-style="slide-right"><i
-                                                                            class="mdi mdi-delete"></i> Save</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-success waves-effect waves-light"
+                                                                    data-style="slide-right"><i
+                                                                        class="mdi mdi-delete"></i> Save</button>
                                                             </div>
                                                         </div><!-- /.modal-content -->
                                                     </div><!-- /.modal-dialog -->
@@ -176,4 +255,12 @@
 <!-- End Page content -->
 <!-- ============================================================== -->
 
+{% endblock %}
+
+{% block js %}
+<!-- Summernote js -->
+<script src="{% static 'libs/summernote/summernote-bs4.min.js' %}"></script>
+
+<!-- Init js -->
+<script src="{% static 'js/pages/form-summernote.init.js' %}"></script>
 {% endblock %}
