@@ -4,7 +4,7 @@ from audio.models import File
 
 # Create your models here.
 class Grade(models.Model):
-    File = models.ForeignKey(File, on_delete=models.SET_NULL, null=True)
+    File = models.ForeignKey(File, on_delete=models.CASCADE, null=True)
     # applicant_id = models.IntegerField(default=0) # in byte
     action_grade = models.IntegerField(default=0)
     enthusiasm_grade = models.IntegerField(default=0)
