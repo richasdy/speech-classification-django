@@ -12,6 +12,8 @@ from django.shortcuts import redirect
 from django.core.files.storage import FileSystemStorage
 
 from audio.models import File
+from .models import Transcribe
+from django.utils import timezone
 
 
 
@@ -23,7 +25,13 @@ def index(request):
 
 def edit(request, id):
     file = get_object_or_404(File, id=id)
-    context = {'file': file}
+    
+    try:
+        transcribe = Transcribe.objects.get(File_id=id)
+    except Transcribe.DoesNotExist:
+        transcribe = Transcribe.objects.create(File_id=file.id)
+
+    context = {'file': file, 'transcribe': transcribe}
     return render(request, 'transcribe/edit.html', context)
     
 
@@ -31,6 +39,19 @@ def update(request, id):
     file = get_object_or_404(File, id=request.POST['id'])
     file.note = request.POST['note']
     file.save()
+
+    transcribe = get_object_or_404(Transcribe, File_id=request.POST['id'])
+    transcribe.action_text = request.POST['action_text']
+    transcribe.enthusiasm_text = request.POST['enthusiasm_text']
+    transcribe.focus_text = request.POST['focus_text']
+    transcribe.imagine_text = request.POST['imagine_text']
+    transcribe.integrity_text = request.POST['integrity_text']
+    transcribe.smart_text = request.POST['smart_text']
+    transcribe.solid_text = request.POST['solid_text']
+    transcribe.speed_text = request.POST['speed_text']
+    transcribe.totality_text = request.POST['totality_text']
+    transcribe.updated_at = timezone.now()
+    transcribe.save()
 
     return HttpResponseRedirect(reverse('transcribe:edit', args=(file.id,)))
 
