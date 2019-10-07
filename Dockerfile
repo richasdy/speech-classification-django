@@ -11,4 +11,4 @@ RUN adduser -D myuser
 USER myuser
 
 # run gunicorn
-CMD gunicorn django_project.wsgi:application --bind 0.0.0.0:$PORT
+CMD gunicorn speechclassification.wsgi:application --bind 0.0.0.0:$PORT
