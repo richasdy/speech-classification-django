@@ -22,7 +22,6 @@ from google.cloud import storage
 from .models import File
 
 bucket_name = 'kemitraan-telkom-1550985641715.appspot.com' #pak ikhsan
-extensions = set(['mp3', 'wav'])
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "keytelkom.json" #pak ikhsan
 
 def index(request):
@@ -83,16 +82,22 @@ def save_local(request):
 
         myfile = request.FILES['myfile']
 
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-
         file = File.objects.create()
-        file.name = filename
-        file.location = fs.url(filename)
-        file.size = fs.size(filename)
+        file.name = myfile.name
+        file.location = settings.MEDIA_URL
+        file.size = myfile.size
         file.save()
 
+        UploadLocalThread.run(myfile)
+
     return redirect('/audio/')
+
+import threading
+# from django.core.files import UploadedFile
+class UploadLocalThread(threading.Thread):
+    def run(file):
+        fs = FileSystemStorage()
+        filename = fs.save(file.name, file)
 
 def save(request):
 
@@ -100,11 +105,21 @@ def save(request):
 
         myfile = request.FILES['myfile']
 
+        file = File.objects.create()
+        file.name = myfile.name.split('.')[0] + ".wav"
+        file.location = settings.MEDIA_URL
+        file.size = myfile.size
+        file.save()
+
+        UploadCloudThread.run(myfile, file.id)
+
+    return redirect('/audio/')
+
+class UploadCloudThread(threading.Thread):
+    def run(file, id):
+
         fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        location_local = fs.url(filename)
-        location_cloud = ""
-        size = fs.size(filename)
+        filename = fs.save(file.name, file)
 
         #jika ekstensi bukan wav, ubah jadi wav dulu
         if filename.split('.')[1] != 'wav':
@@ -129,15 +144,9 @@ def save(request):
 
         os.remove(os.path.join(settings.MEDIA_ROOT, filename))
 
-        file = File.objects.create()
-        file.name = filename
-        file.location = location_local
+        file = get_object_or_404(File, id=id)
         file.location_cloud = location_cloud
-        file.size = size
         file.save()
-
-    return redirect('/audio/')
-
 
 def delete(request, id):
     file = get_object_or_404(File, id=id)
