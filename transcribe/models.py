@@ -7,6 +7,7 @@ from audio.models import File
 class Transcribe(models.Model):
     File = models.ForeignKey(File, on_delete=models.SET_NULL, null=True)
     # applicant_id = models.IntegerField(default=0) # in byte
+    raw = models.TextField(default="")
     action_text = models.TextField(default="")
     enthusiasm_text = models.TextField(default="")
     focus_text = models.TextField(default="")
