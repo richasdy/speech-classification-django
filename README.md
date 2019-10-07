@@ -38,7 +38,7 @@ System deploy on heroku container environment
 
 ```sh
 heroku login -i
-heroku create speech-classification-dri
+heroku create speech-classification-donni
 
 heroku container:login
 heroku container:push web
