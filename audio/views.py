@@ -8,6 +8,7 @@ from django.http import Http404
 from django.urls import reverse
 from django.views import generic
 from django.conf import settings
+import asyncio
 
 
 
@@ -88,14 +89,17 @@ def save_local(request):
         file.size = myfile.size
         file.save()
 
-        UploadLocalThread.run(myfile)
+        # upload = UploadLocalThread()
+        # upload.run(myfile)
+        # UploadLocalThread.run(myfile)
+        asyncio.run(UploadLocalThread.run(myfile))
 
     return redirect('/audio/')
 
 import threading
 # from django.core.files import UploadedFile
 class UploadLocalThread(threading.Thread):
-    def run(file):
+    async def run(file):
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)
 
