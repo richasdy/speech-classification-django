@@ -31,14 +31,14 @@
 
                                         <input type="hidden" id="id" name="id" value="{{ file.id }}">
 
-                                        <div class="form-group row">
+                                        <!-- <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Nama Pelamar</label>
                                             <div class="col-7">
                                                 <input type="text" value="{{ file.Applicant }}" disabled required=""
                                                     parsley-type="email" class="form-control parsley-success"
                                                     id="inputEmail3" placeholder="Pelamar" data-parsley-id="40">
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Nama File</label>
@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group row">
+                                        <!-- <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Lokasi File</label>
                                             <div class="col-7">
                                                 <input type="text" value="{{ file.location }}" name="location" disabled
@@ -87,13 +87,13 @@
                                                     class="form-control parsley-success" id="inputEmail3"
                                                     placeholder="Pelamar" data-parsley-id="40">
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Waktu File
                                                 Dibuat</label>
                                             <div class="col-7">
-                                                <input type="text" value="{{ file.created_at }}" name="created_at"
+                                                <input type="text" value="{{ grade.created_at }}" name="created_at"
                                                     disabled required="" parsley-type="email"
                                                     class="form-control parsley-success" id="inputEmail3"
                                                     placeholder="Pelamar" data-parsley-id="40">
@@ -101,77 +101,113 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <div class="col-12">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h4 class="header-title m-t-0">Verbatim</h4>
-                                                        <p class="sub-header">setiap corporation value
-                                                            dipisahkan berdasarkan paragraf dengan urutan : action,
-                                                            enthusiasm, focus, imagine, integrity, smart, solid, speed,
-                                                            totality</p>
-                                                        <div id="summernote-inline">
+                                            <label for="inputEmail3" class="col-4 col-form-label">Waktu File
+                                                Diupdate</label>
+                                            <div class="col-7">
+                                                <input type="text" value="{{ grade.updated_at }}" name="updated_at"
+                                                    disabled required="" parsley-type="email"
+                                                    class="form-control parsley-success" id="inputEmail3"
+                                                    placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
+                                        </div>
 
-                                                            <p>langsung dikerjain di utara in yang pasti dulu ntar dulu
-                                                                sama tim kita pastikan selalu ada orang-orang disekitar
-                                                                kita yang terkena efek kalau kita tuh punya suatu ide
-                                                                punya punya sesuatu yang mau dikerjain mau diapresiasi
-                                                                ini kita mau dimatiin dulu kalau kalau emang sekiranya
-                                                                orang-orang sekitar setuju ya dikerjain</p>
-                                                            <p>saya sih lebih cenderung pengalaman saya
-                                                                dalamberorganisasi lah ya Ini mah yang sudah saya
-                                                                optimalkan paling saya selalu apabila diberi kepercayaan
-                                                                yang memaksimalkan kepercayaan itu itu karena menurut
-                                                                saya tanggung jawab itu sangat penting gitu</p>
-                                                            <p>memilih prioritas yang lebih penting kalau agenda rapat
-                                                                itu keputusan dan hasilnya lebih penting dan efeknya
-                                                                lebih besar buat semua yang milih rapat ketemu teman
-                                                                kosnya diundur tapi kalau misal ketemu teman kos itu
-                                                                manfaatnya juga efeknya lebih besar daripada hasil
-                                                                mengikuti rapat yang apa memilih lebih lebih memilih
-                                                                bertemu teman kos</p>
-                                                            <p>Saya enggak pernah menyusun rencana jangka panjang saya
-                                                                selalu Mengikuti alur yang ada aja Jadi kalau besok mau
-                                                                ini ya dikerjain kalau lusa nggak ada kerjaannya nggak
-                                                                Dik nggak merencanakan suatu pekerjaan tapi kalau emang
-                                                                besok mau ini langsung dikerjain gitu</p>
-                                                            <p>pernah eh pelanggarannya maksudnya pelanggaran efektif
-                                                                atau pelanggaran buat individu pelanggaran sendiri ya
-                                                                pernah kalau efeknya buat diri sendiri diusahakan ke
-                                                                depannya tidak akan berulang lagi tapi sampai sekarang
-                                                                sih Iya nggak nggak nggak nggak nggak berulang</p>
-                                                            <p>biasanya Apabila terjadi seperti itu saya selalu
-                                                                istirahat dulu dalam kerjaan itu kemudian Ya sambil
-                                                                memikirkan dan bertanya-tanya juga kepada orang yang
-                                                                lebih mengetahui akan hal itu gitu jadi Untuk itu saya
-                                                                biasanya yaitu memikirkan berhenti untuk bekerja itu
-                                                                dulu namun sambil memikirkan gitu dan dengan cara
-                                                                mungkin bertanya kepada yang lebih ahli atau membaca
-                                                                baca lagi referensinya</p>
-                                                            <p>sebisa mungkin saya melakukan pendekatan terlebih dahulu
-                                                                terhadap orang yang bersangkutan tersebut apabila di
-                                                                sini Posisi saya sebagai koordinator nya Namun apabila
-                                                                pendekatan tersebut tidak bisa mereduksi permasalahan
-                                                                tersebut ya saya mencoba untuk membackup membackup
-                                                                jobdesk tersebut karena mau nggak mau kegiatan harus
-                                                                tetap berjalan gitu</p>
-                                                            <p>pernah sebenarnya itu solusinya kalau dari saya saya
-                                                                kerjakan sebisa mungkin dulu maksudnya kita optimalkan
-                                                                waktu yang tersisa gitu jadi ya semaksimal mungkin lah
-                                                                kita kerjakan mau nggak mau karena memang sudah di
-                                                                delete seperti itu ya maksimalkan saja</p>
-                                                            <p>ya ngikutin kegiatan teman-teman sekitar ngikutin
-                                                                organisasi ngikutin apa main sama temen-temen dari main
-                                                                sama temen-temen itu kan pasti ada obrolan ada suatu
-                                                                obrolan yang oh berarti kepribadianku harus gini Oh
-                                                                berarti software goyang ini harus ditambah biar jadi
-                                                                kayak gitu sering berkumpul sama teman-teman sekitar
-                                                                sama kegiatan organisasi</p>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">action
+                                                Grade</label>
+                                            <div class="col-7">
+                                                <input type="text" value="{{ grade.action_grade }}" name="action_grade"
+                                                    required="" parsley-type="email"
+                                                    class="form-control parsley-success" id="inputEmail3"
+                                                    placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
+                                        </div>
 
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">enthusiasm
+                                                Grade</label>
+                                            <div class="col-7">
+                                                <input type="text" value="{{ grade.enthusiasm_grade }}"
+                                                    name="enthusiasm_grade" required="" parsley-type="email"
+                                                    class="form-control parsley-success" id="inputEmail3"
+                                                    placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
+                                        </div>
 
-                                                        </div> <!-- end summernote-inline-->
-                                                    </div> <!-- end card-body-->
-                                                </div> <!-- end card-->
-                                            </div><!-- end col -->
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">focus
+                                                Grade</label>
+                                            <div class="col-7">
+                                                <input type="text" value="{{ grade.focus_grade }}" name="focus_grade"
+                                                    required="" parsley-type="email"
+                                                    class="form-control parsley-success" id="inputEmail3"
+                                                    placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">imagine
+                                                Grade</label>
+                                            <div class="col-7">
+                                                <input type="text" value="{{ grade.imagine_grade }}"
+                                                    name="imagine_grade" required="" parsley-type="email"
+                                                    class="form-control parsley-success" id="inputEmail3"
+                                                    placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">integrity
+                                                Grade</label>
+                                            <div class="col-7">
+                                                <input type="text" value="{{ grade.integrity_grade }}"
+                                                    name="integrity_grade" required="" parsley-type="email"
+                                                    class="form-control parsley-success" id="inputEmail3"
+                                                    placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">smart
+                                                Grade</label>
+                                            <div class="col-7">
+                                                <input type="text" value="{{ grade.smart_grade }}" name="smart_grade"
+                                                    required="" parsley-type="email"
+                                                    class="form-control parsley-success" id="inputEmail3"
+                                                    placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">solid
+                                                Grade</label>
+                                            <div class="col-7">
+                                                <input type="text" value="{{ grade.solid_grade }}" name="solid_grade"
+                                                    required="" parsley-type="email"
+                                                    class="form-control parsley-success" id="inputEmail3"
+                                                    placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">speed
+                                                Grade</label>
+                                            <div class="col-7">
+                                                <input type="text" value="{{ grade.speed_grade }}" name="speed_grade"
+                                                    required="" parsley-type="email"
+                                                    class="form-control parsley-success" id="inputEmail3"
+                                                    placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">totality
+                                                Grade</label>
+                                            <div class="col-7">
+                                                <input type="text" value="{{ grade.totality_grade }}"
+                                                    name="totality_grade" required="" parsley-type="email"
+                                                    class="form-control parsley-success" id="inputEmail3"
+                                                    placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
                                         </div>
 
                                         <ul class="list-inline wizard mt-3">
@@ -220,15 +256,48 @@
 
                                             </li>
 
-
                                             <li class="next list-inline-item float-right">
-                                                <a href="{% url 'grade:process' file.id %}">
-                                                    <button type="button" class="ladda-button btn btn-danger"
-                                                        data-style="slide-right"><i
-                                                            class="mdi mdi-play-box-outline"></i> Process
-                                                    </button>
-                                                </a>
+
+                                                <button type="button" class="btn ladda-button btn btn-danger"
+                                                    data-toggle="modal" data-style="slide-right"
+                                                    data-target=".bs-example-modal-center-process{{file.id}}"><i
+                                                        class="mdi mdi mdi-play-box-outline"></i> Process</button>
+
                                             </li>
+
+                                            <div class="modal fade bs-example-modal-center-process{{file.id}}"
+                                                tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel"
+                                                aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myCenterModalLabel">Are you
+                                                                sure
+                                                                to Process?</h4>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">×</button>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary waves-effect"
+                                                                data-dismiss="modal">Close</button>
+
+                                                            <a href="{% url 'grade:process' file.id %}">
+                                                                <button type="button"
+                                                                    class="btn ladda-button btn btn-danger"
+                                                                    data-style="slide-right"><i
+                                                                        class="mdi mdi mdi-play-box-outline"></i>
+                                                                    Process</button>
+                                                            </a>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
+
+                                            </li>
+
+
+
                                         </ul>
 
                                     </form>
