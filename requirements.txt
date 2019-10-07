@@ -12,3 +12,4 @@ pydub==0.23.1
 pandas==0.24.2
 nltk==3.4
 sklearn
+scikit-learn
