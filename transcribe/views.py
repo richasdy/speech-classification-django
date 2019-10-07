@@ -15,6 +15,12 @@ from audio.models import File
 from .models import Transcribe
 from django.utils import timezone
 
+from google.cloud import speech
+from google.cloud import storage
+import os
+
+bucket_name = 'kemitraan-telkom-1550985641715.appspot.com' #pak ikhsan
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "keytelkom.json" #pak ikhsan
 
 
 def index(request):
@@ -37,7 +43,6 @@ def edit(request, id):
 
 def update(request, id):
     file = get_object_or_404(File, id=request.POST['id'])
-    file.note = request.POST['note']
     file.save()
 
     transcribe = get_object_or_404(Transcribe, File_id=request.POST['id'])
@@ -55,39 +60,70 @@ def update(request, id):
 
     return HttpResponseRedirect(reverse('transcribe:edit', args=(file.id,)))
 
-uploaded_file_list = [];
 
 def save(request):
-    # response = "You're looking at the results of audio save %s. "+request.FILES['file']
-    # return HttpResponse(response % id)
-
-    uploaded_file_list.clear()
-
-    # if request.method == 'POST':
-    #     uploaded_file = request.FILES['file']
-    #     uploaded_file_list.append(uploaded_file)
-    #     fs = FileSystemStorage()
-    #     audio_name = fs.save(uploaded_file.name, uploaded_file)
-    #     audio_url = fs.url(audio_name)
-    #     audio_byte_size = fs.size(audio_name)/1000000
-    #     # audio_megabyte_size = "%.2f" % audio_byte_size
-    #     audio_megabyte_size = "%.2f" % audio_byte_size
-    #     # audio_size = str(audio_megabyte_size)+ " mb"
-    #     audio_size = audio_megabyte_size
-
-    #     file = File(title=audio_name, aplicants_name="Admin (Hard Coded)", directory=audio_url, size=audio_size)
-    #     file.save()
-
-    #     print(audio_url)
-
-    return redirect('/audio/')
-
-    # data3 = File.objects.all()
-    # return render(request, 'django_app/audio-upload.html', {"data3" : data3})
-
+    return redirect('/transcribe/')
 
 def delete(request, id):
     return HttpResponse("You're voting on audio delete %s." % id)
 
 def process(request, id):
-    return HttpResponse("You're voting on audio process %s." % id)
+
+    file = get_object_or_404(File, id=id)
+    TranscribeThread.run(file)
+    return HttpResponseRedirect(reverse('transcribe:edit', args=(id,)))
+
+import threading
+class TranscribeThread(threading.Thread):
+    def run(file):
+        try:
+            hasil_transcribe = transcriptingstreo('gs://'+bucket_name+'/'+file.name)
+        except:
+            hasil_transcribe = transcriptingmono('gs://'+bucket_name+'/'+file.name)
+
+        try:
+            transcribe = Transcribe.objects.get(File_id=file.id)
+        except Transcribe.DoesNotExist:
+            transcribe = Transcribe.objects.create(File_id=file.id)
+
+        transcribe.raw = hasil_transcribe
+        transcribe.save()
+
+def transcriptingstreo(filename):
+    ##global hasiltranscript
+    hasiltranscript=''
+    #client=speech.SpeechClient()
+    #audio=speech.types.RecognitionAudio(uri=filename)
+    #config=speech.types.RecognitionConfig(
+    #    encoding=speech.enums.RecognitionConfig.AudioEncoding.LINEAR16,language_code='id-ID',audio_channel_count=2,
+    #enable_separate_recognition_per_channel=True
+    #)
+    operation=speech.SpeechClient().long_running_recognize(
+        config=speech.types.RecognitionConfig(encoding=speech.enums.RecognitionConfig.AudioEncoding.LINEAR16,
+        language_code='id-ID',audio_channel_count=2,enable_separate_recognition_per_channel=True)
+        ,audio=speech.types.RecognitionAudio(uri=filename))
+    print('Waiting for transcriptingstreo to complete...')
+    #response = operation.result(timeout=10000)
+    for result in operation.result(timeout=10000).results:
+           hasiltranscript += str(result.alternatives[0].transcript)
+    return hasiltranscript
+
+def transcriptingmono(filename):
+    #global hasiltranscript
+    #client = speech.SpeechClient()
+    #audio = speech.types.RecognitionAudio(uri=filename)
+    #config = speech.types.RecognitionConfig(
+    #    encoding=speech.enums.RecognitionConfig.AudioEncoding.LINEAR16, language_code='id-ID'
+    #)
+    #operation = client.long_running_recognize(config=config, audio=audio)
+    hasiltranscript = ''
+    operation = speech.SpeechClient().long_running_recognize(
+        config=speech.types.RecognitionConfig(encoding=speech.enums.RecognitionConfig.AudioEncoding.LINEAR16,
+                                              language_code='id-ID')
+        , audio=speech.types.RecognitionAudio(uri=filename))
+    print('Waiting for transcriptingmono to complete...')
+    response = operation.result(timeout=10000)
+    for result in response.results:
+        hasiltranscript += str(result.alternatives[0].transcript)
+
+    return hasiltranscript

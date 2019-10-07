@@ -14,12 +14,12 @@
 
 <div class="content-page">
     <div class="content">
-
+        
         <!-- Start Content-->
         <div class="container-fluid">
-
+            
             {% include "base_page_title.html" %}
-
+            
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -28,278 +28,330 @@
                                 <div class="col-lg-12">
                                     <form method="post" action="{% url 'transcribe:update' file.id %}">
                                         {% csrf_token %}
-
+                                        
                                         <input type="hidden" id="id" name="id" value="{{ file.id }}">
-
+                                        
                                         <!-- <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Nama Pelamar</label>
                                             <div class="col-7">
                                                 <input type="text" value="{{ file.Applicant }}" disabled required=""
-                                                    parsley-type="email" class="form-control parsley-success"
-                                                    id="inputEmail3" placeholder="Pelamar" data-parsley-id="40">
+                                                parsley-type="email" class="form-control parsley-success"
+                                                id="inputEmail3" placeholder="Pelamar" data-parsley-id="40">
                                             </div>
                                         </div> -->
-
+                                        
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Nama File</label>
                                             <div class="col-7">
                                                 <input type="text" value="{{ file.name }}" name="name" disabled
-                                                    required="" parsley-type="email"
-                                                    class="form-control parsley-success" id="inputEmail3"
-                                                    placeholder="Pelamar" data-parsley-id="40">
+                                                required="" parsley-type="email"
+                                                class="form-control parsley-success" id="inputEmail3"
+                                                placeholder="Pelamar" data-parsley-id="40">
                                             </div>
                                         </div>
-
+                                        
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Catatan</label>
                                             <div class="col-7">
-                                                <input type="text" value="{{ file.note }}" name="note" required=""
-                                                    parsley-type="email" class="form-control parsley-success"
-                                                    id="inputEmail3" placeholder="Pelamar" data-parsley-id="40">
+                                                <input type="text" disabled value="{{ file.note }}" name="note" required=""
+                                                parsley-type="email" class="form-control parsley-success"
+                                                id="inputEmail3" placeholder="Pelamar" data-parsley-id="40">
                                             </div>
                                         </div>
-
+                                        
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">Lokasi</label>
+                                            <div class="col-7">
+                                                <input type="text" disabled value="{{ file.location_cloud }}" name="note"
+                                                required="" parsley-type="email"
+                                                class="form-control parsley-success" id="inputEmail3"
+                                                placeholder="Pelamar" data-parsley-id="40">
+                                            </div>
+                                        </div>
+                                        
                                         <!-- <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Lokasi File</label>
                                             <div class="col-7">
                                                 <input type="text" value="{{ file.location }}" name="location" disabled
-                                                    required="" parsley-type="email"
-                                                    class="form-control parsley-success" id="inputEmail3"
-                                                    placeholder="Pelamar" data-parsley-id="40">
+                                                required="" parsley-type="email"
+                                                class="form-control parsley-success" id="inputEmail3"
+                                                placeholder="Pelamar" data-parsley-id="40">
                                             </div>
                                         </div>
-
+                                        
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Ukuran File</label>
                                             <div class="col-7">
                                                 <input type="text" value="{{ file.size }}" name="size" disabled
-                                                    required="" parsley-type="email"
-                                                    class="form-control parsley-success" id="inputEmail3"
-                                                    placeholder="Pelamar" data-parsley-id="40">
+                                                required="" parsley-type="email"
+                                                class="form-control parsley-success" id="inputEmail3"
+                                                placeholder="Pelamar" data-parsley-id="40">
                                             </div>
                                         </div>
-
+                                        
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Durasi File</label>
                                             <div class="col-7">
                                                 <input type="text" value="{{ file.duration }}" name="duration" disabled
-                                                    required="" parsley-type="email"
-                                                    class="form-control parsley-success" id="inputEmail3"
-                                                    placeholder="Pelamar" data-parsley-id="40">
+                                                required="" parsley-type="email"
+                                                class="form-control parsley-success" id="inputEmail3"
+                                                placeholder="Pelamar" data-parsley-id="40">
                                             </div>
                                         </div> -->
-
+                                        
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-4 col-form-label">Waktu File
                                                 Dibuat</label>
-                                            <div class="col-7">
-                                                <input type="text" value="{{ transcribe.created_at }}" name="created_at"
+                                                <div class="col-7">
+                                                    <input type="text" value="{{ transcribe.created_at }}" name="created_at"
                                                     disabled required="" parsley-type="email"
                                                     class="form-control parsley-success" id="inputEmail3"
                                                     placeholder="Pelamar" data-parsley-id="40">
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">Waktu File
-                                                Diupdate</label>
-                                            <div class="col-7">
-                                                <input type="text" value="{{ transcribe.updated_at }}" name="updated_at"
-                                                    disabled required="" parsley-type="email"
-                                                    class="form-control parsley-success" id="inputEmail3"
-                                                    placeholder="Pelamar" data-parsley-id="40">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-11">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h4 class="header-title m-t-0">RAW Verbatim</h4>
-                                                        <p class="sub-header">Raw verbatim adalah hasil transcribe asli dari mesin transcriber. Silahkan copy paragaf text editor ini ke kolom verbatim "Value" yang bersesuaian</p>
-                                                        <div id="summernote-inline">
-                                                            <p>
-                                                                    mengimplementasikannya ya bagaimana implementasi kan ide desain toko dunia nyata yang pertama kami saling pertama Ya Sayang pasti belajar dulu lah Ya belajar tentang Apa itu bagaimana Apa bakat saya tahu memang apa yang jadinya saya yang kedua Saya mencari teman ataupun orang yang memang mempunyai yang mempunyai sosok apa sesuatu itu yang memang bisa saling timbal balik pada Saya ingin tahu di mana teman tersebut bisa memberikan feedback yang baik tentang bakar saya ataupun peminat saya dan lagi kalau misalnya memang dia bisa membantu saya dalam mengembangkan bakat dan minat saya janji dan lagi juga bisa menemukan kerabat yang lain dalam bentuk kerjasama mungkin ya jangan kerjasama dalam saling menguntungkan mungkin kerabat tersebut membutuhkan saya untuk program yang misalnya dan dia juga bisa memberikan dari program hasil program yang sadis bisa memberikan gaji yang cukup WA atau misalnya bisa memberikan expenses yang lebih gitu di situ jadi Ya kurang lebih seperti itulah
-                                                            </p>
-                                                        </div> <!-- end summernote-inline-->
-                                                    </div> <!-- end card-body-->
-                                                </div> <!-- end card-->
-                                            </div><!-- end col -->
-                                        </div>
-
-
-
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">action
-                                                Verbatim</label>
-                                            <div class="col-7">
-                                                <textarea class="form-control" id="example-textarea" name="action_text"
-                                                    rows="10">{{ transcribe.action_text }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">enthusiasm
-                                                Verbatim</label>
-                                            <div class="col-7">
-                                                <textarea class="form-control" id="example-textarea"
-                                                    name="enthusiasm_text"
-                                                    rows="10">{{ transcribe.enthusiasm_text }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">focus
-                                                Verbatim</label>
-                                            <div class="col-7">
-                                                <textarea class="form-control" id="example-textarea" name="focus_text"
-                                                    rows="10">{{ transcribe.focus_text }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">imagine
-                                                Verbatim</label>
-                                            <div class="col-7">
-                                                <textarea class="form-control" id="example-textarea" name="imagine_text"
-                                                    rows="10">{{ transcribe.imagine_text }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">integrity
-                                                Verbatim</label>
-                                            <div class="col-7">
-                                                <textarea class="form-control" id="example-textarea"
-                                                    name="integrity_text"
-                                                    rows="10">{{ transcribe.integrity_text }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">smart
-                                                Verbatim</label>
-                                            <div class="col-7">
-                                                <textarea class="form-control" id="example-textarea" name="smart_text"
-                                                    rows="10">{{ transcribe.smart_text }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">solid
-                                                Verbatim</label>
-                                            <div class="col-7">
-                                                <textarea class="form-control" id="example-textarea" name="solid_text"
-                                                    rows="10">{{ transcribe.solid_text }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">speed
-                                                Verbatim</label>
-                                            <div class="col-7">
-                                                <textarea class="form-control" id="example-textarea" name="speed_text"
-                                                    rows="10">{{ transcribe.speed_text }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">totality
-                                                Verbatim</label>
-                                            <div class="col-7">
-                                                <textarea class="form-control" id="example-textarea"
-                                                    name="totality_text"
-                                                    rows="10">{{ transcribe.totality_text }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <ul class="list-inline wizard mt-3">
-                                            <li class="previous list-inline-item">
-                                                <a href="{% url 'transcribe:index' %}">
-                                                    <button type="button" class="ladda-button btn btn-info"
-                                                        data-style="slide-right"><i
-                                                            class="mdi mdi-backspace-outline"></i> Back
-                                                    </button>
-                                                </a>
-                                            </li>
-
-
-                                            <li class="next list-inline-item">
-
-                                                <button type="button" class="btn btn-success waves-effect waves-light"
-                                                    data-toggle="modal" data-style="slide-right"
-                                                    data-target=".bs-example-modal-center{{file.id}}"><i
-                                                        class="mdi mdi-content-save-outline mr-1"></i> Save</button>
-
-                                                <div class="modal fade bs-example-modal-center{{file.id}}" tabindex="-1"
-                                                    role="dialog" aria-labelledby="myCenterModalLabel"
-                                                    aria-hidden="true" style="display: none;">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title" id="myCenterModalLabel">Are you
-                                                                    sure
-                                                                    to save?</h4>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×</button>
+                                            
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-4 col-form-label">Waktu File
+                                                    Diupdate</label>
+                                                    <div class="col-7">
+                                                        <input type="text" value="{{ transcribe.updated_at }}" name="updated_at"
+                                                        disabled required="" parsley-type="email"
+                                                        class="form-control parsley-success" id="inputEmail3"
+                                                        placeholder="Pelamar" data-parsley-id="40">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group row">
+                                                    <div class="col-11">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="header-title m-t-0">RAW Verbatim</h4>
+                                                                <p class="sub-header">Raw verbatim adalah hasil transcribe asli
+                                                                    dari mesin transcriber. Silahkan copy paragaf text editor
+                                                                    ini ke kolom verbatim "Value" yang bersesuaian</p>
+                                                                    
+                                                                    <div id="summernote-inline">
+                                                                        <h5></h5>
+                                                                        
+                                                                        {% if transcribe.raw == "" %}
+                                                                        <h5>Proses transcibe belum dilakukan, silahkan klik tombol
+                                                                            proses dibawah</h5>
+                                                                            {% else %}
+                                                                            <p>
+                                                                                {{ transcribe.raw }}
+                                                                            </p>
+                                                                            {% endif %}
+                                                                            
+                                                                        </div> <!-- end summernote-inline-->
+                                                                    </div> <!-- end card-body-->
+                                                                </div> <!-- end card-->
+                                                            </div><!-- end col -->
+                                                        </div>
+                                                        
+                                                        
+                                                        
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3" class="col-4 col-form-label">action
+                                                                Verbatim</label>
+                                                                <div class="col-7">
+                                                                    <textarea class="form-control" id="example-textarea" name="action_text"
+                                                                    rows="10">{{ transcribe.action_text }}</textarea>
+                                                                </div>
                                                             </div>
+                                                            
+                                                            <div class="form-group row">
+                                                                <label for="inputEmail3" class="col-4 col-form-label">enthusiasm
+                                                                    Verbatim</label>
+                                                                    <div class="col-7">
+                                                                        <textarea class="form-control" id="example-textarea"
+                                                                        name="enthusiasm_text"
+                                                                        rows="10">{{ transcribe.enthusiasm_text }}</textarea>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="form-group row">
+                                                                    <label for="inputEmail3" class="col-4 col-form-label">focus
+                                                                        Verbatim</label>
+                                                                        <div class="col-7">
+                                                                            <textarea class="form-control" id="example-textarea" name="focus_text"
+                                                                            rows="10">{{ transcribe.focus_text }}</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3" class="col-4 col-form-label">imagine
+                                                                            Verbatim</label>
+                                                                            <div class="col-7">
+                                                                                <textarea class="form-control" id="example-textarea" name="imagine_text"
+                                                                                rows="10">{{ transcribe.imagine_text }}</textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                        <div class="form-group row">
+                                                                            <label for="inputEmail3" class="col-4 col-form-label">integrity
+                                                                                Verbatim</label>
+                                                                                <div class="col-7">
+                                                                                    <textarea class="form-control" id="example-textarea"
+                                                                                    name="integrity_text"
+                                                                                    rows="10">{{ transcribe.integrity_text }}</textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                            <div class="form-group row">
+                                                                                <label for="inputEmail3" class="col-4 col-form-label">smart
+                                                                                    Verbatim</label>
+                                                                                    <div class="col-7">
+                                                                                        <textarea class="form-control" id="example-textarea" name="smart_text"
+                                                                                        rows="10">{{ transcribe.smart_text }}</textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                <div class="form-group row">
+                                                                                    <label for="inputEmail3" class="col-4 col-form-label">solid
+                                                                                        Verbatim</label>
+                                                                                        <div class="col-7">
+                                                                                            <textarea class="form-control" id="example-textarea" name="solid_text"
+                                                                                            rows="10">{{ transcribe.solid_text }}</textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    
+                                                                                    <div class="form-group row">
+                                                                                        <label for="inputEmail3" class="col-4 col-form-label">speed
+                                                                                            Verbatim</label>
+                                                                                            <div class="col-7">
+                                                                                                <textarea class="form-control" id="example-textarea" name="speed_text"
+                                                                                                rows="10">{{ transcribe.speed_text }}</textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        
+                                                                                        <div class="form-group row">
+                                                                                            <label for="inputEmail3" class="col-4 col-form-label">totality
+                                                                                                Verbatim</label>
+                                                                                                <div class="col-7">
+                                                                                                    <textarea class="form-control" id="example-textarea"
+                                                                                                    name="totality_text"
+                                                                                                    rows="10">{{ transcribe.totality_text }}</textarea>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            
+                                                                                            <ul class="list-inline wizard mt-3">
+                                                                                                <li class="previous list-inline-item">
+                                                                                                    <a href="{% url 'transcribe:index' %}">
+                                                                                                        <button type="button" class="ladda-button btn btn-info"
+                                                                                                        data-style="slide-right"><i
+                                                                                                        class="mdi mdi-backspace-outline"></i> Back
+                                                                                                    </button>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            
+                                                                                            
+                                                                                            <li class="next list-inline-item">
+                                                                                                
+                                                                                                <button type="button" class="btn btn-success waves-effect waves-light"
+                                                                                                data-toggle="modal" data-style="slide-right"
+                                                                                                data-target=".bs-example-modal-center{{file.id}}"><i
+                                                                                                class="mdi mdi-content-save-outline mr-1"></i> Save</button>
+                                                                                                
+                                                                                                <div class="modal fade bs-example-modal-center{{file.id}}" tabindex="-1"
+                                                                                                role="dialog" aria-labelledby="myCenterModalLabel"
+                                                                                                aria-hidden="true" style="display: none;">
+                                                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                                                    <div class="modal-content">
+                                                                                                        <div class="modal-header">
+                                                                                                            <h4 class="modal-title" id="myCenterModalLabel">Are you
+                                                                                                                sure
+                                                                                                                to save?</h4>
+                                                                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                                                                aria-hidden="true">×</button>
+                                                                                                            </div>
+                                                                                                            
+                                                                                                            <div class="modal-footer">
+                                                                                                                <button type="button"
+                                                                                                                class="btn btn-secondary waves-effect"
+                                                                                                                data-dismiss="modal">Close</button>
+                                                                                                                <button type="submit"
+                                                                                                                class="btn btn-success waves-effect waves-light"
+                                                                                                                data-style="slide-right"><i
+                                                                                                                class="mdi mdi-delete"></i> Save</button>
+                                                                                                            </div>
+                                                                                                        </div><!-- /.modal-content -->
+                                                                                                    </div><!-- /.modal-dialog -->
+                                                                                                </div><!-- /.modal -->
+                                                                                                
+                                                                                            </li>
+                                                                                            
+                                                                                            
+                                                                                            <li class="next list-inline-item float-right">
 
-                                                            <div class="modal-footer">
-                                                                <button type="button"
-                                                                    class="btn btn-secondary waves-effect"
-                                                                    data-dismiss="modal">Close</button>
-                                                                <button type="submit"
-                                                                    class="btn btn-success waves-effect waves-light"
-                                                                    data-style="slide-right"><i
-                                                                        class="mdi mdi-delete"></i> Save</button>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal-dialog -->
-                                                </div><!-- /.modal -->
-
-                                            </li>
-
-
-                                            <li class="next list-inline-item float-right">
-                                                <a href="{% url 'transcribe:process' file.id %}">
-                                                    <button type="button" class="ladda-button btn btn-danger"
-                                                        data-style="slide-right"><i
-                                                            class="mdi mdi-play-box-outline"></i> Process
-                                                    </button>
-                                                </a>
-                                            </li>
-                                        </ul>
-
-                                    </form>
-                                </div> <!-- end col -->
-
-                            </div>
-                            <!-- end row-->
-
-                        </div> <!-- end card-body -->
-                    </div> <!-- end card -->
-                </div><!-- end col -->
-            </div>
-            <!-- end row -->
-
-        </div> <!-- container -->
-
-    </div> <!-- content -->
-
-    {% include "base_footer.html" %}
-
-</div>
-
-<!-- ============================================================== -->
-<!-- End Page content -->
-<!-- ============================================================== -->
-
-{% endblock %}
-
-{% block js %}
-<!-- Summernote js -->
-<script src="{% static 'libs/summernote/summernote-bs4.min.js' %}"></script>
-
-<!-- Init js -->
-<script src="{% static 'js/pages/form-summernote.init.js' %}"></script>
-{% endblock %}
+                                                                                                    <button type="button" class="btn ladda-button btn btn-danger"
+                                                                                                        data-toggle="modal" data-style="slide-right"
+                                                                                                        data-target=".bs-example-modal-center-process{{file.id}}"><i
+                                                                                                            class="mdi mdi mdi-play-box-outline"></i> Transcribe</button>
+                                                    
+                                                                                                </li>
+                                                    
+                                                                                                <div class="modal fade bs-example-modal-center-process{{file.id}}"
+                                                                                                    tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel"
+                                                                                                    aria-hidden="true" style="display: none;">
+                                                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                                                        <div class="modal-content">
+                                                                                                            <div class="modal-header">
+                                                                                                                <h4 class="modal-title" id="myCenterModalLabel">Are you
+                                                                                                                    sure
+                                                                                                                    to Process?</h4>
+                                                                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                                                                    aria-hidden="true">×</button>
+                                                                                                            </div>
+                                                    
+                                                                                                            <div class="modal-footer">
+                                                                                                                <button type="button" class="btn btn-secondary waves-effect"
+                                                                                                                    data-dismiss="modal">Close</button>
+                                                    
+                                                                                                                <a href="{% url 'transcribe:process' file.id %}">
+                                                                                                                    <button type="button"
+                                                                                                                        class="btn ladda-button btn btn-danger"
+                                                                                                                        data-style="slide-right"><i
+                                                                                                                            class="mdi mdi mdi-play-box-outline"></i>
+                                                                                                                        Transcribe</button>
+                                                                                                                </a>
+                                                                                                            </div>
+                                                                                                        </div><!-- /.modal-content -->
+                                                                                                    </div><!-- /.modal-dialog -->
+                                                                                                </div><!-- /.modal -->
+                                                    
+                                                                                                </li>
+                                                                                    </ul>
+                                                                                    
+                                                                                </form>
+                                                                            </div> <!-- end col -->
+                                                                            
+                                                                        </div>
+                                                                        <!-- end row-->
+                                                                        
+                                                                    </div> <!-- end card-body -->
+                                                                </div> <!-- end card -->
+                                                            </div><!-- end col -->
+                                                        </div>
+                                                        <!-- end row -->
+                                                        
+                                                    </div> <!-- container -->
+                                                    
+                                                </div> <!-- content -->
+                                                
+                                                {% include "base_footer.html" %}
+                                                
+                                            </div>
+                                            
+                                            <!-- ============================================================== -->
+                                            <!-- End Page content -->
+                                            <!-- ============================================================== -->
+                                            
+                                            {% endblock %}
+                                            
+                                            {% block js %}
+                                            <!-- Summernote js -->
+                                            <script src="{% static 'libs/summernote/summernote-bs4.min.js' %}"></script>
+                                            
+                                            <!-- Init js -->
+                                            <script src="{% static 'js/pages/form-summernote.init.js' %}"></script>
+                                            {% endblock %}
