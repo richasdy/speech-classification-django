@@ -33,6 +33,7 @@ def index(request):
 
 
 def edit(request, id):
+    
     file = get_object_or_404(File, id=id)
     
     try:
@@ -67,9 +68,16 @@ def update(request, id):
 
 def process(request, id):
 
-    transcribe = get_object_or_404(Transcribe, File_id=id)
+    try:
+        transcribe = Transcribe.objects.get(File_id=id)
+    except Transcribe.DoesNotExist:
+        transcribe = Transcribe.objects.create(File_id=id)
+    
+    try:
+        grade = Grade.objects.get(File_id=id)
+    except Grade.DoesNotExist:
+        grade = Grade.objects.create(File_id=id)
 
-    grade = get_object_or_404(Grade, File_id=id)
     grade.action_grade = action.run(transcribe.action_text)
     grade.enthusiasm_grade = enthusiasm.run(transcribe.enthusiasm_text)
     grade.focus_grade = focus.run(transcribe.focus_text)
