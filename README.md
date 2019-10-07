@@ -65,6 +65,11 @@ Use [pep-008](https://www.python.org/dev/peps/pep-0008) for tylr guide
 
 Use [SemVer](http://semver.org/) for versioning. 
 
+## Future Works
+* https://krzysztofzuraw.com/blog/2016/django-celery-rabbit-part-one.html
+* https://krzysztofzuraw.com/blog/2016/django-cookiecutter.html
+* https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/ 
+
 ## Authors
 
 * **Donni Richasdy** - *Initial work* - [richasdy](https://github.com/richasdy)
