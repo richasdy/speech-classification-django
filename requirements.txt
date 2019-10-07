@@ -11,5 +11,4 @@ werkzeug==0.14.1
 pydub==0.23.1
 pandas==0.24.2
 nltk==3.4
-sklearn
-scikit-learn
+scikit-learn==0.20.3
