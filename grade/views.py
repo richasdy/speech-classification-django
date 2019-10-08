@@ -61,6 +61,7 @@ def update(request, id):
     grade.solid_grade = request.POST['solid_grade']
     grade.speed_grade = request.POST['speed_grade']
     grade.totality_grade = request.POST['totality_grade']
+    grade.total = (int(grade.action_grade) + int(grade.enthusiasm_grade) + int(grade.focus_grade) + int(grade.imagine_grade) + int(grade.integrity_grade) + int(grade.smart_grade) + int(grade.solid_grade) + int(grade.speed_grade) + int(grade.totality_grade))/9
     grade.updated_at = timezone.now()
     grade.save()
     
@@ -87,6 +88,7 @@ def process(request, id):
     grade.solid_grade = solid.run(transcribe.solid_text)
     grade.speed_grade = speed.run(transcribe.speed_text)
     grade.totality_grade = totality.run(transcribe.totality_text)
+    grade.total = (int(grade.action_grade) + int(grade.enthusiasm_grade) + int(grade.focus_grade) + int(grade.imagine_grade) + int(grade.integrity_grade) + int(grade.smart_grade) + int(grade.solid_grade) + int(grade.speed_grade) + int(grade.totality_grade))/9
     grade.updated_at = timezone.now()
     grade.save()
 
