@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "kemitraan-telkom-1550985641715",
+  "private_key_id": "56e1f21dce98baa3aeb35a83fdbd6b8e0c4d427a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCQxRvJfEIp6Z/9\nVaufHhs1ST/8S0cfPt4XrbU/O3E6DD0EbEYsqkIhZ4KUEosyFOwXh4LXqfisH7s2\n9I5AvPc2fT0yLCCRBaXalEiHZ48Dolh6th+23BBMn3nB1wwIVgym5x6Sf1bN5FJv\nHF1iK71dA5cHwlQfhEWF9W7trAJmnEe2xvgOXmK+x5RspetT0ez1gTTb22iwD+3q\nsdBWi7aNIA2zuqx1fMcJxTlpF9TGuECZ3dD9uuzwuW4WlTtBk7USNXdjk5FUB6eH\niP6bx6wG2ufvraBxBb+cS3t5FRghstFYkweGKlGgCY+HE86ep3xG+aYprVFlg0o1\ndwJelpiTAgMBAAECggEAALhDbV4iAGXER+yJfM0X4x3iRnP0hSY/+ZeIMQFKtPvB\npXyP5+pQKVUyyQ6htB5N/E2ltFAPc49rxoBUq0IL/47iDyqXNc7Zv8clsm6mEEcJ\nJhviBJbIP9vN3LJ+OsUDLU1CqUjARPIcJBO0ShqBrK1LazP7xiSNNxjRCFKjnUI/\nATWCnQ/y6Uj28lsnYetJ0qNwaqhxiGwAPBzai6HbF2L88Tzwi1jFYIYC5dRIIt+G\nnyuzf4C9gYovxte3xJPasaMKEfCSltAZX4jdrHa28kykIWac03yDMNoTt8wpgo9Q\n1xDnLBcP3UMKd5EIoBCR9F5hAVunP/nTkjgs6rbJ8QKBgQDJVxq3uoX6nRprij5u\nB1swwFrcp3goAyUEyexqgj41PuRgFEqdxNhTrL977uJds7DVGYtsKNWTyrSmcj2b\ngb56g4L6l+Xn8SlrWK1JVYnf6WdYiagDPTwdXZzf6erQmHD6jFd0raXrG33STt/K\nNA0+lLzrKqbSTdrpDIxUfFQduQKBgQC4EnB5Ws4hnGCvrsLp6PxAYSXDg+PotHqV\nWHuwybD2jNEGePNZrmjql9kqEIqsiuvH/gVz+I81XgAbT+NyMoE9WwMaUMbCY8ZP\n/PefDvC6kkz5LlwF/S/wpfi28vR9OHivq3pyGgn04XOt8Fs7avH4pdwMifuOpFq1\nEKLpeUuuqwKBgCr5MHaulRIcnhr98r1BTLFnHP2jsP25Thlrj85b5jMvLUdkjViH\nPzT81hH5ts8RH1kcjqmTPaLBzTUJhSS/2IwFrdsWuLd8vb5vuuzAGSF1i91V5Eps\ns3wBEw6nurqzDsorUi9RMOyxfXV56EIcQgdtb7Ux8VFJ1MORLhKKRtnhAoGAB6o0\n5sjCNqIVYJttYGIkRuYEtYyDbAg/5oIlvGnZpZqdhaB5ua1KjyI9l8PSknbCdLR+\nM6MRC47bgEemV/YEbbKhgXIFpMiU1HXbNdNgcNRwwhuNF27AlUvD/JJHXgOA+wev\n9Jpi+cB9maudkO7WHp2BeUAxqnHrmQiVUBWN8jsCgYAxbDVA9wQ2DqMuLqtQ8rsm\n/tPJ7ySc7p04cGZM88+ARG1wGkR64R3pV4ucgoc9L2QC2NpmlE4/fTJCHUF5h0sG\nofaqVOjyV01S2OrJWvWj8n52a4fR68apGUJFwM3npDbDIyEd7zSOTzB4WIAMoErL\ndPEN1YUYXsJd9roMssDb0A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "sspk-owner@kemitraan-telkom-1550985641715.iam.gserviceaccount.com",
+  "client_id": "108778762343942433441",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sspk-owner%40kemitraan-telkom-1550985641715.iam.gserviceaccount.com"
+}
