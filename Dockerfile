@@ -67,11 +67,20 @@ WORKDIR /app
 # RUN apt-get install -y python3.6
 # RUN apt-get install -y python3-pip
 
+# RUN sudo apt-get update
+# RUN sudo apt-get install -y libpq-dev --fix-missing
+
+# RUN sudo apt-get install -y apt-utils
+RUN sudo apt-get update \
+    && DEBIAN_FRONTEND=noninteractive sudo apt-get -y --no-install-recommends install libpq-dev
+
+
 # RUN apk --update add --no-cache psycopg2-binary
 # RUN apt-get install psycopg2-binary
 # install python dep
 # RUN install_packages gcc musl-dev postgresql-dev postgresql-libs .build-deps
-RUN pip install --no-cache-dir -r requirements.txt
+# RUN pip install --upgrade pip
+RUN sudo pip install --no-cache-dir -r requirements.txt
 
 # collect static files
 # RUN python manage.py collectstatic --noinput
