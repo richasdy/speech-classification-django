@@ -20,7 +20,7 @@ from google.cloud import storage
 import os
 
 bucket_name = 'kemitraan-telkom-1550985641715.appspot.com' #pak ikhsan
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "keytelkom.json" #pak ikhsan
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "sspk-owner.json" #pak ikhsan
 
 
 def index(request):
