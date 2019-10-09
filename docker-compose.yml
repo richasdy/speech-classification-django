@@ -4,8 +4,8 @@ services:
   web:
     build: .
     environment:
-      - PORT=8000
+      - PORT=9000
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
+      - "9000:9000"
