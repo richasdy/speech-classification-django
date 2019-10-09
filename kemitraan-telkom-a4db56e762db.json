@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "kemitraan-telkom-1550985641715",
+  "private_key_id": "a4db56e762dbf4e64cff472c0f2943641c1366a8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC7amMjT58d/DTl\ni4+H/pdXisJ67vEbwzY75lbJGlkj9lJO6KsKnh5ztBz8lQMjYo+WmRhHIaoifi1J\ntvIRep0NZKUBNaq1qVmE5Ft17/wpcUprNuz9uOOvSB+3xaBvrni1T9AnZFElhBCA\njJ4ugkF5f2SqVhHVPqfc1r1uSK2VWtmqF/Ns68XGJbxnNlerLeIm93HRnaS81eCo\n/QdFCD87z/0uiya5jivcVJunNsaxUALjCkr+/XD2r5PnxGnELDdNhyyM0pk9Cazp\nDeyS5tBqUgmvNHdSOPVAx24H5Qd6Uu27SHFeE8rfh/Ic30n4SNkUUGaVkIXiBzYa\n6FBJQN69AgMBAAECggEAAgR7q7okMtzvrtbpRSQC+hDG1i7zToKz90IcBg8wDXiN\n20aa7MLV/hXeyANMpNlfRVZBkiZ1H+ju0N/UzEZfIXFHa3Np8omvqoQQzfy24LVV\nAUF2nKacYNssaDyK5RjiOMVyrrHgQ8CfstqQq1yAmu+5pDHIAF0rzm9LW8ARik2K\n2JnIG4Wh0eNhS9hOifDRJDAdvkJ+1RZiAxhkdfwSFQsz0OY8lhny6B7/1jiwjXfp\n1L+MPCKyMPrz5YKqiQvPbrfD7p0yto+K7lEowiB6gLsUJLg1lh/qThDtko8vq25p\n3M+NcyaXwg+sLTGmcmN/cTVJKqy15IPaCpNonJfuWwKBgQDl8OaRHpThYrXaCn2Z\nqW4o3imf2O0rHEUYfvCaTNC5R7rzqeXESiRkbXg+auI/trb3ndenZAPC6U/CGn8d\nZwW2JM3cORuvROC5wk7K0ZFIqmfKR6qbYx0lPy/gxaVKQzz7pFS3VM9Zy31GQZ59\nrVL95vWTmRRYwgH/l5aJQaZMDwKBgQDQp7qm9VnaOIvwbqVfBz6DwqHwUMdNU+xe\nZcYw9djKrK0gtFfrHKro+PbeVbiT/A/F55+BERzCTwARf2nuTiXJW9DYccjwOb7Q\nuvGK4blzt1uwJY0Di91s84mIAHoTtyVxMRvo9AY+ZymcHs79Q+eVnTcgp0G7GquQ\ntfT/dEQMcwKBgDPXtKRTeM24K7gVVWwnvyaHsGrRxedKYGm9dRHU79pWSdhWHe+7\np6jc5ZdtEcW7tFTvyYd8DT0MzWa+Aprmd2sxsRhN5+gEZ4Z6QLmJtm/ju7LnpZeT\nKScUr/7FkRbFQiKaUl9jR7y/HGeSs+EyCtwkDopQoT3BwCGYU+BuZMgRAoGBALBA\n/yqJlpz/pzYyQP9E30nt311g3vozKjeTQRealMaflp9Jt/qi/LxPkjm9r21SPwCt\n587e5aw9j5E4UAM9gC3XoVM0ysgh/03SnLb0dfOJr6ncDoIwY5rlHggEXxrIWpiD\nI1Bk0eFkw4FdhPvroHSBmU+7+YpTvRlAmvQvAkyBAoGBAJrKIjswBPfpSQMCQ5rB\nr02dQCHnBtB6wEN028o2hUrZh+FQq0b4nwBmS9NyaE0pGwxjLnx+kuSys3gWvggo\nBLrogqQtPl4DrXAcHdCJhD2sLo+kEhvhOvYuicpWi8edFHFAAG+s0xj14OuC8Vef\npTHKhEYNs9TGNLKpQ6lEH8t1\n-----END PRIVATE KEY-----\n",
+  "client_email": "kemitraan-telkom-1550985641715@appspot.gserviceaccount.com",
+  "client_id": "102089589265118073583",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kemitraan-telkom-1550985641715%40appspot.gserviceaccount.com"
+}
