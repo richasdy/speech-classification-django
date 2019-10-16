@@ -24,7 +24,7 @@ def preprocessing(tmp):
 
 import pickle
 with open("clf-focus.pickle", "rb") as f:
-    svr = pickle.load(f)
+    model = pickle.load(f)
     vectorizer = pickle.load(f)
     tfidf_transformer = pickle.load(f)
 f.close()
@@ -41,5 +41,5 @@ def run(temp):
     temp = tfidf_transformer.transform(temp)
     temp = temp.toarray()
     
-    pred = svr.predict(temp)
+    pred = model.predict(temp)
     return pred[0]
