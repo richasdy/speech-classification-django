@@ -19,8 +19,11 @@ from google.cloud import speech
 from google.cloud import storage
 import os
 
-bucket_name = 'kemitraan-telkom-1550985641715.appspot.com' #pak ikhsan
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "sspk-owner.json" #pak ikhsan
+
+# bucket_name = 'kemitraan-telkom-1550985641715.appspot.com' #pak ikhsan
+bucket_name = 'quantum-engine-248003.appspot.com' #pak ikhsan
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "sspk-owner.json" #pak ikhsan
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "My_First_Project-2c46ff0c115f.json" #pak ikhsan
 
 
 def index(request):
@@ -46,15 +49,16 @@ def update(request, id):
     file.save()
 
     transcribe = get_object_or_404(Transcribe, File_id=request.POST['id'])
-    transcribe.action_text = request.POST['action_text']
-    transcribe.enthusiasm_text = request.POST['enthusiasm_text']
-    transcribe.focus_text = request.POST['focus_text']
-    transcribe.imagine_text = request.POST['imagine_text']
-    transcribe.integrity_text = request.POST['integrity_text']
-    transcribe.smart_text = request.POST['smart_text']
-    transcribe.solid_text = request.POST['solid_text']
-    transcribe.speed_text = request.POST['speed_text']
-    transcribe.totality_text = request.POST['totality_text']
+    # transcribe.action_text = request.POST['action_text']
+    # transcribe.enthusiasm_text = request.POST['enthusiasm_text']
+    # transcribe.focus_text = request.POST['focus_text']
+    # transcribe.imagine_text = request.POST['imagine_text']
+    # transcribe.integrity_text = request.POST['integrity_text']
+    # transcribe.smart_text = request.POST['smart_text']
+    # transcribe.solid_text = request.POST['solid_text']
+    # transcribe.speed_text = request.POST['speed_text']
+    # transcribe.totality_text = request.POST['totality_text']
+    transcribe.verbatim_text = request.POST['verbatim_text']
     transcribe.updated_at = timezone.now()
     transcribe.save()
 
@@ -87,6 +91,7 @@ class TranscribeThread(threading.Thread):
             transcribe = Transcribe.objects.create(File_id=file.id)
 
         transcribe.raw = hasil_transcribe
+        transcribe.verbatim_text = hasil_transcribe
         transcribe.save()
 
 def transcriptingstreo(filename):

@@ -8,6 +8,7 @@ class Transcribe(models.Model):
     File = models.ForeignKey(File, on_delete=models.CASCADE, null=True)
     # applicant_id = models.IntegerField(default=0) # in byte
     raw = models.TextField(default="")
+    verbatim_text = models.TextField(default="")
     action_text = models.TextField(default="")
     enthusiasm_text = models.TextField(default="")
     focus_text = models.TextField(default="")
