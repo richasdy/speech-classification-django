@@ -22,8 +22,8 @@ from google.cloud import storage
 
 from .models import File
 
-bucket_name = 'kemitraan-telkom-1550985641715.appspot.com' #pak ikhsan
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "sspk-owner.json" #pak ikhsan
+bucket_name = 'quantum-engine-248003.appspot.com' #pak ikhsan
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "My_First_Project-2c46ff0c115f.json" #pak ikhsan
 
 def index(request):
     file_list = File.objects.all()
