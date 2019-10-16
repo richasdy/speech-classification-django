@@ -79,15 +79,16 @@ def process(request, id):
     except Grade.DoesNotExist:
         grade = Grade.objects.create(File_id=id)
 
-    grade.action_grade = action.run(transcribe.action_text)
-    grade.enthusiasm_grade = enthusiasm.run(transcribe.enthusiasm_text)
-    grade.focus_grade = focus.run(transcribe.focus_text)
-    grade.imagine_grade = imagine.run(transcribe.imagine_text)
-    grade.integrity_grade = integrity.run(transcribe.integrity_text)
-    grade.smart_grade = smart.run(transcribe.smart_text)
-    grade.solid_grade = solid.run(transcribe.solid_text)
-    grade.speed_grade = speed.run(transcribe.speed_text)
-    grade.totality_grade = totality.run(transcribe.totality_text)
+    grade.action_grade = action.run(transcribe.verbatim_text)
+    grade.enthusiasm_grade = enthusiasm.run(transcribe.verbatim_text)
+    grade.focus_grade = focus.run(transcribe.verbatim_text)
+    grade.imagine_grade = imagine.run(transcribe.verbatim_text)
+    grade.integrity_grade = integrity.run(transcribe.verbatim_text)
+    grade.smart_grade = smart.run(transcribe.verbatim_text)
+    grade.solid_grade = solid.run(transcribe.verbatim_text)
+    grade.speed_grade = speed.run(transcribe.verbatim_text)
+    grade.totality_grade = totality.run(transcribe.verbatim_text)
+
     grade.total = (int(grade.action_grade) + int(grade.enthusiasm_grade) + int(grade.focus_grade) + int(grade.imagine_grade) + int(grade.integrity_grade) + int(grade.smart_grade) + int(grade.solid_grade) + int(grade.speed_grade) + int(grade.totality_grade))/9
     grade.updated_at = timezone.now()
     grade.save()
