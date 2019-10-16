@@ -18,7 +18,7 @@ def index(request):
     grade_count = Grade.objects.count()
     grade_percent = grade_count/target_count*100
 
-    grade_list = Grade.objects.order_by('total')[:5]
+    grade_list = Grade.objects.order_by('-total')[:5]
     context = {
         'grade_list':grade_list,
 
