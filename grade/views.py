@@ -16,14 +16,23 @@ from .models import Grade
 from transcribe.models import Transcribe
 from django.utils import timezone
 from grade import action
+from grade import annaction
 from grade import enthusiasm
+from grade import annenthusiasm
 from grade import focus
+from grade import annfocus
 from grade import imagine
+from grade import annimagine
 from grade import integrity
+from grade import annintegrity
 from grade import smart
+from grade import annsmart
 from grade import solid
+from grade import annsolid
 from grade import speed
+from grade import annspeed
 from grade import totality
+from grade import anntotality
 
 
 def index(request):
@@ -79,15 +88,15 @@ def process(request, id):
     except Grade.DoesNotExist:
         grade = Grade.objects.create(File_id=id)
 
-    grade.action_grade = action.run(transcribe.verbatim_text)
-    grade.enthusiasm_grade = enthusiasm.run(transcribe.verbatim_text)
-    grade.focus_grade = focus.run(transcribe.verbatim_text)
-    grade.imagine_grade = imagine.run(transcribe.verbatim_text)
-    grade.integrity_grade = integrity.run(transcribe.verbatim_text)
-    grade.smart_grade = smart.run(transcribe.verbatim_text)
-    grade.solid_grade = solid.run(transcribe.verbatim_text)
-    grade.speed_grade = speed.run(transcribe.verbatim_text)
-    grade.totality_grade = totality.run(transcribe.verbatim_text)
+    grade.action_grade = annaction.run(transcribe.verbatim_text)
+    grade.enthusiasm_grade = annenthusiasm.run(transcribe.verbatim_text)
+    grade.focus_grade = annfocus.run(transcribe.verbatim_text)
+    grade.imagine_grade = annimagine.run(transcribe.verbatim_text)
+    grade.integrity_grade = annintegrity.run(transcribe.verbatim_text)
+    grade.smart_grade = annsmart.run(transcribe.verbatim_text)
+    grade.solid_grade = annsolid.run(transcribe.verbatim_text)
+    grade.speed_grade = annspeed.run(transcribe.verbatim_text)
+    grade.totality_grade = anntotality.run(transcribe.verbatim_text)
 
     grade.total = (int(grade.action_grade) + int(grade.enthusiasm_grade) + int(grade.focus_grade) + int(grade.imagine_grade) + int(grade.integrity_grade) + int(grade.smart_grade) + int(grade.solid_grade) + int(grade.speed_grade) + int(grade.totality_grade))/9
     grade.updated_at = timezone.now()

@@ -119,6 +119,17 @@
                                                     required="" parsley-type="email"
                                                     class="form-control parsley-success" id="inputEmail3"
                                                     placeholder="Pelamar" data-parsley-id="40">
+                                                <!-- <select name="action_grade" class="btn btn-light">
+                                                    <option value="1"
+                                                        {% ifequal grade.action_grade 1 %}selected{% endifequal %}>(1) Not
+                                                        Satisfactory</option>
+                                                    <option value="2"
+                                                        {% ifequal grade.action_grade 2 %}selected{% endifequal %}>(2) Less
+                                                        Satisfactory</option>
+                                                    <option value="3"
+                                                        {% ifequal grade.action_grade 3 %}selected{% endifequal %}>
+                                                        (3) Satisfactory</option>
+                                                </select> -->
                                             </div>
                                         </div>
 
@@ -214,10 +225,9 @@
                                             <label for="inputEmail3" class="col-4 col-form-label">TOTAL
                                                 GRADE</label>
                                             <div class="col-7">
-                                                <input type="text" value="{{ grade.total }}"
-                                                    name="totality_grade" disabled parsley-type="email"
-                                                    class="form-control parsley-success" id="inputEmail3"
-                                                    placeholder="Pelamar" data-parsley-id="40">
+                                                <input type="text" value="{{ grade.total }}" name="totality_grade"
+                                                    disabled parsley-type="email" class="form-control parsley-success"
+                                                    id="inputEmail3" placeholder="Pelamar" data-parsley-id="40">
                                             </div>
                                         </div>
 
