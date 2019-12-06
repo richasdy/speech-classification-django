@@ -23,7 +23,7 @@ import os
 # bucket_name = 'kemitraan-telkom-1550985641715.appspot.com' #pak ikhsan
 bucket_name = 'quantum-engine-248003.appspot.com' #pak ikhsan
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "sspk-owner.json" #pak ikhsan
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "My_First_Project-2c46ff0c115f.json" #pak ikhsan
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "credentials/My_First_Project-2c46ff0c115f.json" #pak ikhsan
 
 
 def index(request):
