@@ -30,8 +30,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = '9*uf^gc6tx_)p5i_2g7^ka9%o_32%mg+tfd&^zn9+cs4wlwili'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', 'speech-classification-donni.herokuapp.com', 'hello-django-donni.herokuapp.com', 'sspk-telkom.komputasi.id', '10.251.251.132']
 
