@@ -15,23 +15,14 @@ from audio.models import File
 from .models import Grade
 from transcribe.models import Transcribe
 from django.utils import timezone
-from grade import action
 from grade import annaction
-from grade import enthusiasm
 from grade import annenthusiasm
-from grade import focus
 from grade import annfocus
-from grade import imagine
 from grade import annimagine
-from grade import integrity
 from grade import annintegrity
-from grade import smart
 from grade import annsmart
-from grade import solid
 from grade import annsolid
-from grade import speed
 from grade import annspeed
-from grade import totality
 from grade import anntotality
 
 
