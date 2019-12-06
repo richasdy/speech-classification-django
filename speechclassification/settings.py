@@ -30,7 +30,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = '9*uf^gc6tx_)p5i_2g7^ka9%o_32%mg+tfd&^zn9+cs4wlwili'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', 'speech-classification-donni.herokuapp.com', 'hello-django-donni.herokuapp.com', 'sspk-telkom.komputasi.id', '10.251.251.132']
 
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -60,6 +62,18 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'speechclassification.urls'
+
+# check deploy
+if not DEBUG:
+    X_FRAME_OPTIONS = 'DENY'
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    # SECURE_SSL_REDIRECT = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 3600 
+    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 TEMPLATES = [
     {
@@ -127,12 +141,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static-prod/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
+    # '/var/www/static/',
 ]
+# STATIC_ROOT = "/var/www/example.com/static/"
+STATIC_ROOT = "static-prod"
 
+# whiteniose
+# compression + caching
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# compression + without caching
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Activate Django-Heroku.
 # django_heroku.settings(locals())
