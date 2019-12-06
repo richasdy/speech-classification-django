@@ -80,6 +80,7 @@ RUN sudo apt-get update \
 # install python dep
 # RUN install_packages gcc musl-dev postgresql-dev postgresql-libs .build-deps
 # RUN pip install --upgrade pip
+# RUN sudo pip install -H --upgrade pip 
 RUN sudo pip install --no-cache-dir -r requirements.txt
 
 # collect static files
