@@ -28,7 +28,7 @@ clf = SVC(gamma='auto')
 #clf.fit(X_train, Y_train)
 
 import pickle
-with open("clf-totality.pickle", "rb") as f:
+with open("grade/model-ml/clf-totality.pickle", "rb") as f:
     clf = pickle.load(f)
     vectorizer = pickle.load(f)
     tfidf_transformer = pickle.load(f)

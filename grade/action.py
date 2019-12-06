@@ -23,7 +23,7 @@ def preprocessing(tmp):
     return tmp
 
 import pickle
-with open("clf-action.pickle", "rb") as f:
+with open("grade/model-ml/clf-action.pickle", "rb") as f:
     clf = pickle.load(f)          
     vectorizer = pickle.load(f)
     tfidf_transformer = pickle.load(f)

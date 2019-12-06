@@ -44,11 +44,11 @@ def text_normalization(text):
 
 
 import pickle
-with open("token.pickle", "rb") as f:
+with open("grade/model-ml/token.pickle", "rb") as f:
     tokenizer = pickle.load(f)          
 f.close()
 
-model = load_model('annsolid.h5')
+model = load_model('grade/model-ml/annsolid.h5')
 
 #run(pd.Series(["Hello Doni"]))
 

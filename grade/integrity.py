@@ -23,7 +23,7 @@ def preprocessing(tmp):
     return tmp
 
 import pickle
-with open("clf-integrity.pickle", "rb") as f:
+with open("grade/model-ml/clf-integrity.pickle", "rb") as f:
     grid_search = pickle.load(f)
     vectorizer = pickle.load(f)
     tfidf_transformer = pickle.load(f)
