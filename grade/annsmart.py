@@ -1,22 +1,13 @@
 import pandas as pd
 import pickle
-from os.path import expanduser as ospath
-from keras.preprocessing.text import one_hot
-from keras.preprocessing.text import Tokenizer
-from sklearn.model_selection import train_test_split
 from keras.preprocessing.sequence import pad_sequences
-from keras.models import Sequential
-from keras import layers
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 import re
 import string
 import numpy as np
-from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import OneHotEncoder
 from keras.models import load_model
 
 
