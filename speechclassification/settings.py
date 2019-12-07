@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'audio.apps.AudioConfig',
     'transcribe.apps.TranscribeConfig',
     'grade.apps.GradeConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,7 @@ if not DEBUG:
     X_FRAME_OPTIONS = 'DENY'
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
-    # SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_HSTS_SECONDS = 3600 
