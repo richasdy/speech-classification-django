@@ -128,7 +128,7 @@ class UploadCloudThread(threading.Thread):
         #jika ekstensi bukan wav, ubah jadi wav dulu
         if filename.split('.')[1] != 'wav':
             dst = filename.split('.')[0] + ".wav"
-            sound = AudioSegment.from_mp3(os.path.join(settings.MEDIA_ROOT, filename))
+            sound = AudioSegment.from_file(os.path.join(settings.MEDIA_ROOT, filename))
             sound.export(os.path.join(settings.MEDIA_ROOT, dst), format='wav')
             os.remove(os.path.join(settings.MEDIA_ROOT, filename))
             filename = dst
